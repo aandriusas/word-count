@@ -21,10 +21,11 @@
     <div class="column">
         <div class="header">A-G</div>
         <div class="results">
-            <div class="result" th:each="count: ${wordCountResult.aToG}" th:text="${count}"></div>
+            <div class="result" th:each="count: ${wordCountResult.aToG}"
+                 th:text="${count.key + ': ' + count.value}"></div>
         </div>
         <div class="buttonDiv">
-            <button onclick="window.location.href = '/download?range=';">download</button>
+            <button onclick="window.location.href = '/download?range=A-G';">download</button>
         </div>
     </div>
     <div class="column">
@@ -95,6 +96,9 @@
     .wordCountResult .buttonDiv {
         margin: 10px;
         text-align: center;
+        border-top: solid 1px darkgray;
+        border-bottom: solid 1px darkgray;
+        padding: 5px;
     }
 </style>
 </body>
