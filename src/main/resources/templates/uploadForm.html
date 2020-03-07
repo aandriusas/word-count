@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="lt" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Word count application</title>
+</head>
+
+<body>
+<form action="/" enctype="multipart/form-data" method="POST" name="uploadingForm">
+    <div class="uploadDiv">
+        <div class="uploadText">Upload your files</div>
+        <div class="fileInputDiv">
+            <input id="fileInput" multiple name="uploadingFiles" type="file">
+        </div>
+        <div class="submitDiv">
+            <input type="submit" value="upload">
+        </div>
+    </div>
+</form>
+<div class="wordCountResult" th:if="${wordCountResult != null}">
+    <div class="column">
+        <div class="header">A-G</div>
+        <div class="results">
+            <div class="result" th:each="count: ${wordCountResult.aToG}" th:text="${count}"></div>
+        </div>
+        <div class="buttonDiv">
+            <button onclick="window.location.href = '/download?range=';">download</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="header">H-N</div>
+        <div class="results">
+            <div class="result" th:each="count: ${wordCountResult.hToN}" th:text="${count}"></div>
+        </div>
+        <div class="buttonDiv">
+            <button onclick="window.location.href = '/download?range=H-N';">download</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="header">O-U</div>
+        <div class="results">
+            <div class="result" th:each="count: ${wordCountResult.oToU}" th:text="${count}"></div>
+        </div>
+        <div class="buttonDiv">
+            <button onclick="window.location.href = '/download?range=O-U';">download</button>
+        </div>
+    </div>
+    <div class="column">
+        <div class="header">V-Z</div>
+        <div class="results">
+            <div class="result" th:each="count: ${wordCountResult.vToZ}" th:text="${count}"></div>
+        </div>
+        <div class="buttonDiv">
+            <button onclick="window.location.href = '/download?range=V-Z';">download</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .uploadDiv {
+        text-align: center;
+        background-color: #F0F0F0;
+        padding: 10px;
+    }
+
+    .uploadText {
+        font-weight: bold;
+    }
+
+    .fileInputDiv {
+        margin: 10px;
+    }
+
+    .wordCountResult {
+        display: table;
+        width: 100%;
+    }
+
+    .wordCountResult .column {
+        display: table-cell;
+        border: solid 2px darkgrey;
+    }
+
+    .wordCountResult .header {
+        border-bottom: solid 1px;
+        text-align: center;
+        font-weight: bold;
+        font-size: larger;
+    }
+
+    .wordCountResult .results {
+        margin: 10px;
+    }
+
+    .wordCountResult .buttonDiv {
+        margin: 10px;
+        text-align: center;
+    }
+</style>
+</body>
+</html>
